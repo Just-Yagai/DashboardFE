@@ -1,0 +1,170 @@
+<div class="table-responsive">
+    <table class="bor table table-bordered mt-3 mb-auto align-middle">
+        <thead>
+            <tr>
+                <th class="lopendeopdrachten text-center" colspan="9">Comprobantes</th>
+            </tr>
+            <tr class="text-center">
+                <th>Rnc Emisor</th>
+                <th>Razon social emisor</th>
+                <th>e-NCF</th>
+                <th>Fecha Recepcion</th>
+                <th>Fecha Emision</th>
+                <th>Rnc Comprobador</th>
+                <th>Monto Total</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let items of datosComprobantes">
+                <td>{{ items.rncEmisor }}</td>
+                <td>{{ items.razonSocial}}</td>
+                <td>{{ items.e_ncf}}</td>
+                <td>{{ items.fechaRecepcion}}</td>
+                <td>{{ items.fechaEmision}}</td>
+                <td>{{ items.rncComprador}}</td>
+                <td>{{ items.montoTotal}}</td>
+                <td>{{ items.estado}}</td>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn icon"
+                            (click)="
+                                setENCF(items.e_ncf);
+                                setFechaRegistro(items.fechaRegistro);
+                                setFechaActualizacion(items.fechaActualizacion);
+                                setMontoTotal(items.montoTotal);
+                                setMontoImpuesto(items.montoImpuesto);
+                                setMontoExento(items.montoExento);
+                                setCodigoSeguridad(items.codigoSeguridad);
+                                setAprobacionComercial(items.aprobacionComercial);
+                                setRncComprador(items.rncComprador);
+                                setMontoGravador(items.montoGravado);
+                                setTotalItbis(items.totalItbis);
+                                setMontoNoFacturado(items.montoNoFacturado);
+                                setVersionECF(items.versionECF);
+                                setFechaApronacionComercial(items.fechaAprobacionComercial)"
+                                class="btn"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal3">
+                                <img src="assets/img/view-more.svg" width="30" height="30" alt="Ver Mas">
+                        </button>
+                        <button class="btn icon"><img src="assets/img/view-ri.svg" width="30" height="30" alt="Ver PDF" (click)="generatePDF()"></button>
+                        <button class="btn icon"
+                                    (click)="
+                                    setENCF(items.e_ncf);
+                                    setRncComprador(items.rncComprador);
+                                    setFechaRegistro(items.fechaRegistro);
+                                    settrackID(items.trackID)
+                                    "><img src="assets/img/view-msg.svg" width="30" height="30" alt="Ver Mensaje"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal4"></button>
+                        <button class="btn icon"><img src="assets/img/view-xml.svg" width="30" height="30" alt="Ver XML"></button> 
+                    </div>
+                </td>
+            </tr>
+            <!-- Modal 1 -->
+            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-4 w-100 text-center" id="exampleModalLabel">Detalles del Comprobante</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <th>e-NCF</th>
+                                        <td>{{ eNCFModal }}</td>
+                                        <th>RNC Comprador</th>
+                                        <td>{{ rncCompradorModal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fecha Registro</th>
+                                        <td>{{ fechaRegistroModal }}</td>
+                                        <th>Fecha Actualizacion</th>
+                                        <td>{{ fechaActualizacionModal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Monto Total</th>
+                                        <td>{{ montoTotalModal }}</td>
+                                        <th>Monto Gravado Total</th>
+                                        <td>{{ montoGravadoModal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Monto del Impuesto Adicional</th>
+                                        <td>{{ montoImpuestoModal }}</td>
+                                        <th>Total ITBIS</th>
+                                        <td>{{ totalItbisModal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Monto Exento</th>
+                                        <td>{{ montoExentoModal }}</td>
+                                        <th>Monto no Facturable</th>
+                                        <td>{{ montoNoFacturadoModal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Codigo Seguridad</th>
+                                        <td>{{ codigoSeguridadModal }}</td>
+                                        <th>Version e-CF</th>
+                                        <td>{{ versionECFModal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Aprobacion Comercial</th>
+                                        <td>{{ aprobacionComercialModal }}</td>
+                                        <th>Fecha Aprobacion Comercial</th>
+                                        <td>{{ fechaAprobacionComercialModal }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end Modal -->
+
+        <!-- Modal 2 -->
+        <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-4 w-100 text-center" id="exampleModalLabel">Mensaje de Rechazo</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <th>e-NCF</th>
+                                        <td>{{ eNCFModal }}</td>
+                                        <th>RNC Comprador</th>
+                                        <td>{{ rncCompradorModal }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Fecha Registro</th>
+                                        <td>{{ fechaRegistroModal}}</td>
+                                        <th>Track ID</th>
+                                        <td>{{ trackIdModal }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end Modal -->
+        </tbody>
+    </table>
+</div>

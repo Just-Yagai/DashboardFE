@@ -1,0 +1,148 @@
+<div class="container overflow-hidden">
+    <div class="row gx-5">
+        <!-- First Card -->
+        <div class="col d-inline p-3">
+            <div class="card">
+                <h5 class="card-header">Datos de Contribuyente</h5>
+                <div class="card-body d-inline">
+                    <div class="row g-3 align-items-center">
+                        <!-- Datos de Contribuyente -->
+                        <div class="col-auto">
+                            <label class="col-form-label">rnc:</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col col-form-label">
+                            <button type="submit" class="btn btn-success btn-sm">Buscar</button>
+                        </div>
+                    </div>
+                    <!-- Razon Social -->
+                    <label class="col-form-label">razon social:</label>
+                    <textarea class="form-control mb-2" rows="3" disabled>Actividades economicas del contribuyente.</textarea>
+                </div>
+            </div>
+        </div>
+        <!-- End Card -->
+
+        <!-- Second Card -->
+        <div class="col p-3">
+            <div class="card">
+                <h5 class="card-header">Datos de Certificacion</h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row justify-content-between g-2">
+                            <!-- Tipo de certificacion -->
+                            <div class="col-lg-auto">
+                                <label class="col-form-label">Tipo certificacion:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" placeholder="Emisor" disabled>
+                            </div>
+                            <!-- Estado -->
+                            <div class="col-lg-3">
+                                <label class="col-form-label">Estado:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control" placeholder="Registrado" disabled>
+                            </div>
+                            <!-- Inicio Postulacion -->
+                            <div class="col-lg-auto">
+                                <label class="col-form-label">Inicio Postulacion:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="date" class="form-control" placeholder="07/03/2023" disabled>
+                            </div>
+                            <!-- Finalizacion Postulacion -->
+                            <div class="col-lg-auto">
+                                <label class="col-form-label">Finalizacion Postulacion:</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="date" class="form-control" disabled>
+                            </div>
+                            <!-- End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabs Navegation -->
+<div class="container overflow-hidden">
+    <div class="card row gx-3 mb-2">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <!-- Marcas Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link active" id="marcas" data-bs-toggle="tab" data-bs-target="#marcas-tab-pane"
+                        type="button" role="tab" aria-controls="marcas-tab-pane" arial-selected="true">Marcas</button>
+                </li>
+                <!-- Delegaciones Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link" id="delegaciones" data-bs-toggle="tab"
+                        data-bs-target="#delegaciones-tab-pane" type="button" role="tab"
+                        aria-controls="delegaciones-tab-pane" arial-selected="true">Delegaciones</button>
+                </li>
+                <!-- Secuencias Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link" id="secuencias" data-bs-toggle="tab" data-bs-target="#secuencias-tab-pane"
+                        type="button" role="tab" aria-controls="secuencias-tab-pane"
+                        arial-selected="true">Secuencias</button>
+                </li>
+                <!-- Comprobantes Tabs -->
+                <li class="nav-item" role="presentacion">
+                    <button class="nav-link" id="comprobantes" data-bs-toggle="tab"
+                        data-bs-target="#comprobantes-tab-pane" type="button" role="tab"
+                        aria-controls="comprobantes-tab-pane" arial-selected="true">Comprobantes</button>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body tab-content" id="myTabContent">
+            <!-- Marcas -->
+            <div class="tab-pane fade show active" 
+                id="marcas-tab-pane" role="tabpanel" 
+                aria-labelledby="marcas-tab" 
+                tabindex="0">
+                <app-select-option></app-select-option>
+                <app-marcas></app-marcas>
+            </div>
+            <!-- Delegaciones -->
+            <div class="tab-pane fade" 
+                id="delegaciones-tab-pane" 
+                role="tabpanel" 
+                aria-labelledby="delegaciones-tab" 
+                tabindex="0">
+                <app-select-option></app-select-option>
+                <app-delegaciones></app-delegaciones>
+            </div>
+            <!-- Secuencias -->
+            <div class="tab-pane fade" 
+                id="secuencias-tab-pane" 
+                role="tabpanel" 
+                aria-labelledby="secuencias-tab" 
+                tabindex="0">
+                <app-select-option [ver]="true"></app-select-option>
+                <app-secuencias></app-secuencias>
+            </div>
+            <!-- Comprobantes -->
+            <div class="tab-pane fade" 
+                id="comprobantes-tab-pane" 
+                role="tabpanel" 
+                aria-labelledby="comprobantes-tab" 
+                tabindex="0">
+                <app-select-option [comprobante]="true"></app-select-option>
+                <app-comprobantes></app-comprobantes>
+            </div>
+            <!-- End -->
+        </div>
+    </div>
+</div>
+
+<ul>
+    <li><a routerLink="/layouts/marcas">Marcas</a></li>
+    <li><a routerLink="/layouts/delegaciones">Delegaciones</a></li>
+    <li><a routerLink="/layouts/secuencias">Secuencias</a></li>
+    <li><a routerLink="/layouts/comprobantes">Comprobantes</a></li>
+</ul>

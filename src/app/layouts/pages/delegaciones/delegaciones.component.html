@@ -1,0 +1,135 @@
+<!-- Tabla de Delegaciones -->
+<div class="table-responsive">
+    <table class="table table-bordered mt-3 mb-auto text-center align-middle">
+        <thead>
+            <tr>
+                <th class="lopendeopdrachten text-center" colspan="7">Delegaciones</th>
+            </tr>
+            <tr>
+                <th>Rnc Delegado</th>
+                <th>Es firmante Autorizado</th>
+                <th>Es solicitante Autorizado</th>
+                <th>Es aprobador Comercial</th>
+                <th>Es administrador</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let items of datosDelegaciones; let i = index">
+                <ng-container *ngIf="editingRow !== i; else editFields">
+                    <td>{{ items.rnc }}</td>
+                    <td [ngStyle]="{ 'color': items.firmanteAutorizado === '✓' ? 'green' : 'red' }">{{
+                        items.firmanteAutorizado }}</td>
+                    <td [ngStyle]="{ 'color': items.solicitanteAutorizado === '✓' ? 'green' : 'red' }">{{
+                        items.solicitanteAutorizado }}</td>
+                    <td [ngStyle]="{ 'color': items.aprobadorComercial === '✓' ? 'green' : 'red' }">{{
+                        items.aprobadorComercial }}</td>
+                    <td [ngStyle]="{ 'color': items.administrador === '✓' ? 'green' : 'red' }">{{ items.administrador }}
+                    </td>
+                    <td [ngStyle]="{ 'color': items.estado === 'Activo' ? 'green' : 'red' }">{{ items.estado }}</td>
+                    <td>
+                        <button (click)="startEditing(i)" class="btn btn-success btn-sm m-1">Editar</button>
+                        <!-- <button class="btn btn-success btn-sm">Ver mas</button> -->
+                        <button (click)="setRncModal(items.rnc); 
+                                        setFechaRegistro(items.fechaRegistro); 
+                                        setFechaActualizacion(items.fechaActualizacion);
+                                        setIdentificacion(items.identificacion)" class="btn"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal1"><img width="35" height="35" src="assets/img/view-more.svg"></button>
+                    </td>
+                </ng-container>
+                <ng-template #editFields>
+                    <td>
+                        <label>{{ items.rnc }}</label>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-icon" 
+                                    (click)="selectButton(i, 0, true);
+                                    items.firmanteAutorizado = '✓'"
+                                    [ngClass]="{'selected': buttonStates[0][i]}">✓</button>
+                            <button class="btn btn-light btn-icon" 
+                                    (click)="selectButton(i, 0, false);
+                                    items.firmanteAutorizado = 'X'"
+                                    [ngClass]="{'selected': !buttonStates[0][i]}">X</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 1, true);
+                                    items.solicitanteAutorizado = '✓'"
+                                [ngClass]="{'selected': buttonStates[1][i]}">✓</button>
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 1, false);
+                                    items.solicitanteAutorizado = 'X'"
+                                [ngClass]="{'selected': !buttonStates[1][i]}">X</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 2, true);
+                                    items.aprobadorComercial= '✓'"
+                                [ngClass]="{'selected': buttonStates[2][i]}">✓</button>
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 2, false);
+                                    items.aprobadorComercial = 'X'"
+                                [ngClass]="{'selected': !buttonStates[2][i]}">X</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 3, true);
+                                    items.administrador = '✓'" [ngClass]="{'selected': buttonStates[3][i]}">✓</button>
+                            <button class="btn btn-light btn-icon" (click)="selectButton(i, 3, false);
+                                    items.administrador = 'X'" [ngClass]="{'selected': !buttonStates[3][i]}">X</button>
+                        </div>
+                    </td>
+                    <td>
+                        <select class="form-select" name="miselect" [(ngModel)]="items.estado"
+                            aria-label="Default select example">
+                            <option [value]="item" *ngFor="let item of listaEstado">{{item}}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn" (click)="saveChanges()"><img width="35" height="35" src="assets/img/correct.svg"></button>
+                        <button class="btn" (click)="cancelEditing()"><img width="35" height="35" src="assets/img/error.svg"></button>
+                    </td>
+                </ng-template>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel1">Mas información</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered mt-3 text-center align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Identifiacion</th>
+                                            <th>Fecha Registro</th>
+                                            <th>Fecha Actualizacion</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        <tr>
+                                            <td>{{ identificacionModal }}</td>
+                                            <td>{{ fechaRegistroModal }}</td>
+                                            <td>{{ fechaActualizacionModal }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end Modal -->
+        </tbody>
+    </table>
+</div>
