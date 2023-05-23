@@ -1,15 +1,50 @@
-import { Component } from '@angular/core';
-// import * as pdfMake from 'pdfmake/build/pdfmake';
-// import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-// (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
+import { Component, OnInit } from '@angular/core';
 import { jsPDF } from 'jspdf';
+import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
+
+// interface RespuestaData {
+//   comprobante: any[];
+// }
 
 @Component({
   selector: 'app-comprobantes',
   templateUrl: './comprobantes.component.html',
   styleUrls: ['./comprobantes.component.css']
 })
-export class ComprobantesComponent {
+export class ComprobantesComponent implements OnInit {
+
+  public datosComprobantes: any = [];
+
+  constructor( private datosServices: DatosContribuyentesService ){}
+
+  ngOnInit(): void {
+    this.cargarData();
+  }
+
+  cargarData(){
+    this.datosServices.cargarDatos()
+        .subscribe( (resp: any) => {
+          this.datosComprobantes = resp.comprobante;
+          console.log(resp.comprobante);
+        });
+  }
+
+  // public cargarData(){
+  //   this.comprobanteService.get(`assets/json/datos.json`)
+  //   .subscribe( respuesta => {
+  //     console.log(respuesta);
+  //   });
+  // }
+  
+  // public cargarData() {
+  //   this.comprobanteService.get(`assets/json/datos.json`)
+  //     .subscribe((respuesta: any) => {
+  //       const comprobante = respuesta.comprobante;
+  //       console.log(comprobante);
+  //       this.datosComprobantes = respuesta.comprobante;
+  //       console.log(this.datosComprobantes);
+  //     });
+  // }
 
   generatePDF(){
     let doc = new jsPDF("p", "mm", "A4");
@@ -22,30 +57,30 @@ export class ComprobantesComponent {
     window.open(url);
   }
 
-  datosComprobantes: any[] = [
-    {
-      rncEmisor: '131880738',
-      razonSocial: 'Razon social contribuyente',
-      e_ncf: 'E310000000001',
-      fechaRecepcion: '07/03/2023',
-      fechaEmision: '07/03/2023',
-      rncComprador: '00199999996',
-      montoTotal: '500',
-      montoImpuesto: '0',
-      montoExento: '0',
-      codigoSeguridad: 'UkCKEI',
-      aprobacionComercial: 'No',
-      fechaActualizacion: '16/05/2023 11:00:29 AM',
-      montoGravado: '0',
-      totalItbis: '0',
-      montoNoFacturado: '0',
-      versionECF: '0',
-      fechaAprobacionComercial: 'N/A',
-      estado: 'Disponible', // Puede ser 'Disponible', 'Pendiente', 'Rechazado',
-      fechaRegistro: '16/05/2023 11:00:29 AM',
-      trackID: 'f66b1999-ff06-4fa1-ac00-ea69b84ad9c7'
-    }
-  ];
+  // datosComprobantes: any[] = [
+  //   {
+  //     rncEmisor: '131880738',
+  //     razonSocial: 'Razon social contribuyente',
+  //     e_ncf: 'E310000000001',
+  //     fechaRecepcion: '07/03/2023',
+  //     fechaEmision: '07/03/2023',
+  //     rncComprador: '00199999996',
+  //     montoTotal: '500',
+  //     montoImpuesto: '0',
+  //     montoExento: '0',
+  //     codigoSeguridad: 'UkCKEI',
+  //     aprobacionComercial: 'No',
+  //     fechaActualizacion: '16/05/2023 11:00:29 AM',
+  //     montoGravado: '0',
+  //     totalItbis: '0',
+  //     montoNoFacturado: '0',
+  //     versionECF: '0',
+  //     fechaAprobacionComercial: 'N/A',
+  //     estado: 'Disponible', 
+  //     fechaRegistro: '16/05/2023 11:00:29 AM',
+  //     trackID: 'f66b1999-ff06-4fa1-ac00-ea69b84ad9c7'
+  //   }
+  // ];
 
   // Modal
   eNCFModal: string = '';
@@ -124,6 +159,4 @@ export class ComprobantesComponent {
     this.fechaAprobacionComercialModal = fechaAprobacionComercial
   }
   // end modal
-
-
 }

@@ -1,7 +1,7 @@
 <!-- Tabla de Delegaciones -->
 <div class="table-responsive">
     <table class="table table-bordered mt-3 mb-auto text-center align-middle">
-        <thead>
+        <thead class="table-light">
             <tr>
                 <th class="lopendeopdrachten text-center" colspan="7">Delegaciones</th>
             </tr>
@@ -29,7 +29,7 @@
                     </td>
                     <td [ngStyle]="{ 'color': items.estado === 'Activo' ? 'green' : 'red' }">{{ items.estado }}</td>
                     <td>
-                        <button (click)="startEditing(i)" class="btn btn-success btn-sm m-1">Editar</button>
+                        <button (click)="startEditing(i)" class="btn"><img width="30" height="30" src="assets/img/edit.svg"></button>
                         <!-- <button class="btn btn-success btn-sm">Ver mas</button> -->
                         <button (click)="setRncModal(items.rnc); 
                                         setFechaRegistro(items.fechaRegistro); 

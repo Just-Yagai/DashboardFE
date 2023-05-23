@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,12 +9,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router,){
+                this.username = 'pedro';
+                this.password = '123';
+              }
 
-  username?: string;
-  password?: string;
+  username: string;
+  password: string;
 
   login(){
+    console.log(this.username);
+    console.log(this.password);
     this.router.navigate(['/layouts/dashboard']);
   }
 }

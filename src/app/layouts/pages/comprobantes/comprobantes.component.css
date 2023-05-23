@@ -2,8 +2,9 @@
     --bs-btn-border-color: 0;
 }
 
-.bor{
-  border: black;
+.text1{
+  position: relative;
+  top: -45px;
 }
 
 .btn-success {

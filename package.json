@@ -23,6 +23,7 @@
     "pdfmake": "^0.2.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "vkbeautify": "^0.99.3",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@angular/cli": "~16.0.2",
     "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
+    "@types/vkbeautify": "^0.99.2",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

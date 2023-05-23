@@ -1,7 +1,7 @@
 <!-- Tabla Marcas -->
 <div class="table-responsive">
     <table class="table table-bordered mt-3 mb-auto text-center align-middle">
-        <thead>
+        <thead class="table-light">
             <tr>
                 <th class="lopendeopdrachten text-center" colspan="4">Marcas Disponibles</th>
             </tr>
@@ -14,9 +14,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let items of datosMarcas; let i = index">
-                <td>{{ items.marca }}</td>
+                <td>{{ items.tipo_marca }}</td>
                 <td [ngStyle]="{ 'color': items.estado === 'Disponible' ? 'green' : 'red' }">{{ items.estado }}</td>
-                <td>{{ items.fecha }}</td>
+                <td>{{ items.fecha_inicio_operacion }}</td>
                 <td>
                     <img width="30" height="30" 
                     [ngClass]="items.btn === 'Remover' ? 'remove-image' : 'enable-image'"
