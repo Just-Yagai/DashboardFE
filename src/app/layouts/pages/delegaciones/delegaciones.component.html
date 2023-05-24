@@ -1,11 +1,11 @@
 <!-- Tabla de Delegaciones -->
 <div class="table-responsive">
-    <table class="table table-bordered mt-3 mb-auto text-center align-middle">
+    <table class="table table-bordered mt-3 mb-auto align-middle">
         <thead class="table-light">
             <tr>
                 <th class="lopendeopdrachten text-center" colspan="7">Delegaciones</th>
             </tr>
-            <tr>
+            <tr class="text-center">
                 <th>Rnc Delegado</th>
                 <th>Es firmante Autorizado</th>
                 <th>Es solicitante Autorizado</th>
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let items of datosDelegaciones; let i = index">
+            <tr class="text-center" *ngFor="let items of datosDelegaciones; let i = index">
                 <ng-container *ngIf="editingRow !== i; else editFields">
                     <td>{{ items.rnc_delegado }}</td>
                     <td [ngStyle]="{ 'color': items.firmanteAutorizado === '✓' ? 'green' : 'red' }">{{
@@ -100,23 +100,23 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel1">Mas información</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h1 class="modal-title fs-4 w-100 text-center" id="exampleModalLabel1">Mas información</h1>
                         </div>
                         <div class="modal-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered mt-3 text-center align-middle">
-                                    <thead>
+                                <table class="table table-bordered">
+                                    <thead></thead>
+                                    <tbody>
                                         <tr>
                                             <th>Identifiacion</th>
-                                            <th>Fecha Registro</th>
-                                            <th>Fecha Actualizacion</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="table-group-divider">
-                                        <tr>
                                             <td>{{ identificacionModal }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha Registro</th>
                                             <td>{{ fechaRegistroModal }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha Actualizacion</th>
                                             <td>{{ fechaActualizacionModal }}</td>
                                         </tr>
                                     </tbody>
