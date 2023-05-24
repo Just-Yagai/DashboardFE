@@ -25,21 +25,6 @@ export class MarcasComponent implements OnInit {
         });
   }
 
-  // datosMarcas: any[] = [
-  //   {
-  //     marca: 'Facturador Electronico',
-  //     estado: 'Disponible',
-  //     btn: 'Remover',
-  //     fecha: '12/05/2023'
-  //   },
-  //   {
-  //     marca: 'Facturador Gratuito',
-  //     estado: 'No disponible',
-  //     btn: 'Habilitar',
-  //     fecha: '14/05/2023'
-  //   }
-  // ];
-
   cambiarEstado(index: number) {
     if (this.datosMarcas[index].estado === 'Disponible') {
       this.datosMarcas[index].estado = 'No disponible';

@@ -1,11 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
 
 @Component({
   selector: 'app-delegaciones',
   templateUrl: './delegaciones.component.html',
   styleUrls: ['./delegaciones.component.css']
 })
-export class DelegacionesComponent {
+export class DelegacionesComponent implements OnInit {
+
+  public datosDelegaciones: any = [];
+
+  constructor( private datosServices: DatosContribuyentesService ){}
+
+  ngOnInit(): void {
+    this.cargarData();
+  }
+
+  cargarData(){
+    this.datosServices.cargarDatos()
+        .subscribe( (resp: any) => {
+          this.datosDelegaciones = resp.delegaciones;
+          console.log(resp.delegaciones);
+        });
+  }
 
   isSelected: boolean = false;
 
@@ -19,8 +36,8 @@ export class DelegacionesComponent {
   fechaActualizacionModal: string = '';
   identificacionModal: string = '';
 
-  setRncModal(rnc: string) {
-    this.rncModal = rnc;
+  setRncModal(rnc_delegado: string) {
+    this.rncModal = rnc_delegado;
   }
 
   setFechaRegistro(fechaRegistro: string) {
@@ -36,36 +53,10 @@ export class DelegacionesComponent {
   }
   // end modal
 
-
   editingRow: number = -1; // -1 indicates no row is being edited
   originalData: any = {}; 
   lista: string[] = ["✓", "X"];
   listaEstado: string[] = ["Activo", "Inactivo"];
-
-  datosDelegaciones: any[] = [
-    {
-      rnc: '00199999996',
-      firmanteAutorizado: null,
-      solicitanteAutorizado: null,
-      aprobadorComercial: null,
-      administrador: null,
-      estado: null,
-      identificacion: '40212599253',
-      fechaRegistro: '15/01/2023',
-      fechaActualizacion: '23/09/2025'
-    },
-    {
-      rnc: '00188888886',
-      firmanteAutorizado: null,
-      solicitanteAutorizado: null,
-      aprobadorComercial: null,
-      administrador: null,
-      estado: null,
-      identificacion: '40253689562',
-      fechaRegistro: '14/05/2023',
-      fechaActualizacion: '12/05/2023'
-    },
-  ];
 
   buttonStates: boolean[][] = [
     [false, false], // Columna de firmanteAutorizado

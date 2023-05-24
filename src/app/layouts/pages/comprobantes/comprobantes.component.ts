@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { jsPDF } from 'jspdf';
 import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
+import * as JsonToXML from 'js2xmlparser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 // interface RespuestaData {
 //   comprobante: any[];
@@ -14,11 +16,21 @@ import { DatosContribuyentesService } from 'src/app/services/datos-contribuyente
 export class ComprobantesComponent implements OnInit {
 
   public datosComprobantes: any = [];
+  // xmlContent: SafeHtml = '';
+  xmlContent = '';
 
-  constructor( private datosServices: DatosContribuyentesService ){}
+  constructor(private datosServices: DatosContribuyentesService,
+              private sanitizer: DomSanitizer ){}
+              
 
   ngOnInit(): void {
     this.cargarData();
+  }
+
+  imprimirxml(){
+    const xml = JsonToXML.parse('datos', this.datosComprobantes);
+    this.xmlContent = (xml);
+    // this.xmlContent = this.sanitizer.bypassSecurityTrustHtml(xml);
   }
 
   cargarData(){
@@ -56,31 +68,6 @@ export class ComprobantesComponent implements OnInit {
     const url = URL.createObjectURL(blob);
     window.open(url);
   }
-
-  // datosComprobantes: any[] = [
-  //   {
-  //     rncEmisor: '131880738',
-  //     razonSocial: 'Razon social contribuyente',
-  //     e_ncf: 'E310000000001',
-  //     fechaRecepcion: '07/03/2023',
-  //     fechaEmision: '07/03/2023',
-  //     rncComprador: '00199999996',
-  //     montoTotal: '500',
-  //     montoImpuesto: '0',
-  //     montoExento: '0',
-  //     codigoSeguridad: 'UkCKEI',
-  //     aprobacionComercial: 'No',
-  //     fechaActualizacion: '16/05/2023 11:00:29 AM',
-  //     montoGravado: '0',
-  //     totalItbis: '0',
-  //     montoNoFacturado: '0',
-  //     versionECF: '0',
-  //     fechaAprobacionComercial: 'N/A',
-  //     estado: 'Disponible', 
-  //     fechaRegistro: '16/05/2023 11:00:29 AM',
-  //     trackID: 'f66b1999-ff06-4fa1-ac00-ea69b84ad9c7'
-  //   }
-  // ];
 
   // Modal
   eNCFModal: string = '';

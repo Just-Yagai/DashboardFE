@@ -18,7 +18,7 @@
         <tbody>
             <tr *ngFor="let items of datosDelegaciones; let i = index">
                 <ng-container *ngIf="editingRow !== i; else editFields">
-                    <td>{{ items.rnc }}</td>
+                    <td>{{ items.rnc_delegado }}</td>
                     <td [ngStyle]="{ 'color': items.firmanteAutorizado === '✓' ? 'green' : 'red' }">{{
                         items.firmanteAutorizado }}</td>
                     <td [ngStyle]="{ 'color': items.solicitanteAutorizado === '✓' ? 'green' : 'red' }">{{
@@ -31,16 +31,16 @@
                     <td>
                         <button (click)="startEditing(i)" class="btn"><img width="30" height="30" src="assets/img/edit.svg"></button>
                         <!-- <button class="btn btn-success btn-sm">Ver mas</button> -->
-                        <button (click)="setRncModal(items.rnc); 
+                        <button (click)="setRncModal(items.rnc_delegado); 
                                         setFechaRegistro(items.fechaRegistro); 
                                         setFechaActualizacion(items.fechaActualizacion);
                                         setIdentificacion(items.identificacion)" class="btn"
-                            data-bs-toggle="modal" data-bs-target="#exampleModal1"><img width="35" height="35" src="assets/img/view-more.svg"></button>
+                            data-bs-toggle="modal" data-bs-target="#exampleModal1"><img width="30" height="30" src="assets/img/view-more.svg"></button>
                     </td>
                 </ng-container>
                 <ng-template #editFields>
                     <td>
-                        <label>{{ items.rnc }}</label>
+                        <label>{{ items.rnc_delegado }}</label>
                     </td>
                     <td>
                         <div class="btn-group">
@@ -89,8 +89,8 @@
                         </select>
                     </td>
                     <td>
-                        <button class="btn" (click)="saveChanges()"><img width="35" height="35" src="assets/img/correct.svg"></button>
-                        <button class="btn" (click)="cancelEditing()"><img width="35" height="35" src="assets/img/error.svg"></button>
+                        <button class="btn" (click)="saveChanges()"><img width="30" height="30" src="assets/img/correct.svg"></button>
+                        <button class="btn" (click)="cancelEditing()"><img width="30" height="30" src="assets/img/error.svg"></button>
                     </td>
                 </ng-template>
             </tr>

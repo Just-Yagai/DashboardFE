@@ -30,22 +30,22 @@
   "delegaciones": [
     {
       "rnc_delegado": "00199999996",
-      "firmanteAutorizado": true,
-      "solicitanteAutorizado": false,
-      "aprobadorComercial": true,
-      "administrador": false,
-      "estado": "Activo",
+      "firmanteAutorizado": null,
+      "solicitanteAutorizado": null,
+      "aprobadorComercial": null,
+      "administrador": null,
+      "estado": "",
       "identificacion": "40212599253",
       "fechaRegistro": "15/01/2023",
       "fechaActualizacion": "23/09/2025"
     },
     {
-      "rnc": "00188888886",
-      "firmanteAutorizado": false,
-      "solicitanteAutorizado": true,
-      "aprobadorComercial": false,
-      "administrador": true,
-      "estado": "Inactivo",
+      "rnc_delegado": "00188888886",
+      "firmanteAutorizado": null,
+      "solicitanteAutorizado": null,
+      "aprobadorComercial": null,
+      "administrador": null,
+      "estado": "",
       "identificacion": "40253689562",
       "fechaRegistro": "14/05/2023",
       "fechaActualizacion": "12/05/2023"
