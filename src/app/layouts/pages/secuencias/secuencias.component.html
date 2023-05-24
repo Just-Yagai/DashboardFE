@@ -1,11 +1,11 @@
 <!-- Tabla de Secuencias -->
 <div class="table-responsive">
-    <table class="table table-bordered mt-3 mb-auto text-center align-middle">
+    <table class="table table-bordered mt-3 mb-auto align-middle">
         <thead class="table-light">
             <tr>
                 <th class="lopendeopdrachten text-center" colspan="7">Secuencias</th>
             </tr>
-            <tr>
+            <tr class="text-center">
                 <th>Tipo e-CF</th>
                 <th>Secuencias desde</th>
                 <th>Secuencias hasta</th>
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let items of datosSecuencias">
+            <tr class="text-center" *ngFor="let items of datosSecuencias">
                 <td>{{ items.e_CF }}</td>
                 <td>{{ items.secuenciaDesde }}</td>
                 <td>{{ items.secuenciaHasta }}</td>
@@ -26,8 +26,8 @@
                 <td>
                     <button (click)="setFechaRegistro2(items.fechaRegistro2);
                                     setFechaDesdeModal(items.fechaDesde);
-                                    setFechaHastaModal(items.fechaHasta);" class="btn btn-success btn-sm"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal2">Ver mas</button>
+                                    setFechaHastaModal(items.fechaHasta);" class="btn"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal2"><img src="assets/img/view-more.svg" width="30" height="30" alt="Ver Mas"></button>
                 </td>
             </tr>
             <!-- Modal -->
@@ -36,26 +36,41 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Mas información</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h1 class="modal-title fs-4 w-100 text-center" id="exampleModalLabel">Mas información</h1>
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
                         </div>
                         <div class="modal-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered mt-3 text-center align-middle">
-                                    <thead>
+                                <table class="table">
+                                    <thead></thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>Fecha Registro</th>
+                                            <td>{{ fechaRegistroModal2 }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha Desde</th>
+                                            <td>{{ fechaDesdeModal }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Fecha Hasta</th>
+                                            <td>{{ fechaHastaModal }}</td>
+                                        </tr>
+                                    </tbody>
+                                    <!-- <thead>
                                         <tr>
                                             <th>Fecha Registro</th>
                                             <th>Fecha Desde</th>
                                             <th>Fecha Hasta</th>
                                         </tr>
-                                    </thead>
-                                    <tbody class="table-group-divider">
+                                    </thead> -->
+                                    <!-- <tbody class="table-group-divider">
                                         <tr>
                                             <td>{{ fechaRegistroModal2 }}</td>
                                             <td>{{ fechaDesdeModal }}</td>
                                             <td>{{ fechaHastaModal }}</td>
                                         </tr>
-                                    </tbody>
+                                    </tbody> -->
                                 </table>
                             </div>
                         </div>

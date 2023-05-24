@@ -11,16 +11,19 @@
                             <label class="col-form-label">rnc:</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" class="form-control"
-                            [(ngModel)]="rnc">
+                            <!-- <input type="text" class="form-control"
+                            [(ngModel)]="rnc"> -->
+                            <input type="text" class="form-control">
                         </div>
                         <div class="col col-form-label">
-                            <button type="submit" class="btn btn-success btn-sm" (click)="buscarContribuyente()">Buscar</button>
+                            <!-- <button type="submit" class="btn btn-success btn-sm" (click)="buscarContribuyente()">Buscar</button> -->
+                            <button type="submit" class="btn btn-success btn-sm" >Buscar</button>
                         </div>
                     </div>
                     <!-- Razon Social -->
                     <label class="col-form-label">razon social:</label>
-                    <textarea class="form-control mb-2" rows="3" disabled [(ngModel)]="datosContribuyente.razon_social"></textarea>
+                    <!-- <textarea class="form-control mb-2" rows="3" disabled [(ngModel)]="datosContribuyente.razon_social"></textarea> -->
+                    <textarea class="form-control mb-2" rows="3" disabled></textarea>
                 </div>
             </div>
         </div>
@@ -38,28 +41,32 @@
                                 <label class="col-form-label">Tipo certificacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" [(ngModel)]="datosCertificacion.tipo_certificacion" disabled>
+                                <!-- <input type="text" class="form-control" [(ngModel)]="datosCertificacion.tipo_certificacion" disabled> -->
+                                <input type="text" class="form-control" disabled>
                             </div>
                             <!-- Estado -->
                             <div class="col-lg-3">
                                 <label class="col-form-label">Estado:</label>
                             </div>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" [(ngModel)]="datosCertificacion.estado" disabled>
+                                <!-- <input type="text" class="form-control" [(ngModel)]="datosCertificacion.estado" disabled> -->
+                                <input type="text" class="form-control" disabled>
                             </div>
                             <!-- Inicio Postulacion -->
                             <div class="col-lg-auto">
                                 <label class="col-form-label">Inicio Postulacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <input type="date" class="form-control" [(ngModel)]="datosCertificacion.inicio_postulacion" disabled>
+                                <!-- <input type="date" class="form-control" [(ngModel)]="datosCertificacion.inicio_postulacion" disabled> -->
+                                <input type="date" class="form-control" disabled>
                             </div>
                             <!-- Finalizacion Postulacion -->
                             <div class="col-lg-auto">
                                 <label class="col-form-label">Finalizacion Postulacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <input type="date" class="form-control" [(ngModel)]="datosCertificacion.finalizacion_postulacion" disabled>
+                                <!-- <input type="date" class="form-control" [(ngModel)]="datosCertificacion.finalizacion_postulacion" disabled> -->
+                                <input type="date" class="form-control" disabled>
                             </div>
                             <!-- End -->
                         </div>
@@ -141,9 +148,9 @@
     </div>
 </div>
 
-<ul>
+<!-- <ul>
     <li><a routerLink="/layouts/marcas">Marcas</a></li>
     <li><a routerLink="/layouts/delegaciones">Delegaciones</a></li>
     <li><a routerLink="/layouts/secuencias">Secuencias</a></li>
     <li><a routerLink="/layouts/comprobantes">Comprobantes</a></li>
-</ul>
+</ul> -->

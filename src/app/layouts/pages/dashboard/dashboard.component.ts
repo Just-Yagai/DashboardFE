@@ -8,27 +8,27 @@ import { DatosContribuyentesService } from 'src/app/services/datos-contribuyente
 })
 export class DashboardComponent {
 
-  rnc!: string;
-  datosContribuyente: any;
-  datosCertificacion: any;
+  // rnc!: string;
+  // datosContribuyente: any;
+  // datosCertificacion: any;
 
   constructor(private dataServices: DatosContribuyentesService){}
 
-  buscarContribuyente() {
+  // buscarContribuyente() {
     
-    if (!this.rnc){
-      return;
-    }
+  //   if (!this.rnc){
+  //     return;
+  //   }
 
-    this.dataServices.buscarContribuyentes(this.rnc).subscribe(
-      (response) => {
-        this.datosContribuyente = response.datos_contribuyentes[0];
-        this.datosCertificacion = response.datos_certificacion[0];
-      },
-      (error) => {
-        console.error('Error al buscar el contribuyente:', error);
-      }
-    );
-  }
+  //   this.dataServices.buscarContribuyentes(this.rnc).subscribe(
+  //     (response) => {
+  //       this.datosContribuyente = response.datos_contribuyentes[0];
+  //       this.datosCertificacion = response.datos_certificacion[0];
+  //     },
+  //     (error) => {
+  //       console.error('Error al buscar el contribuyente:', error);
+  //     }
+  //   );
+  // }
 
 }

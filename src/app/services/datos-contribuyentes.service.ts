@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class DatosContribuyentesService {
 
-  private apiUrl = 'assets/json/datos.json';
+  // public apiUrl = 'assets/json/datos.json';
 
   constructor(private http: HttpClient) { }
 
-  buscarContribuyentes(rnc: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}?rnc=${rnc}`);
-  }
+  // buscarContribuyentes(rnc: string): Observable<any> {
+  //   return this.http.get<any>(`${this.apiUrl}?rnc=${rnc}`);
+  // }
 
   cargarDatos() {
 
