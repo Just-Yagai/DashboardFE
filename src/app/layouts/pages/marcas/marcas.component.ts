@@ -20,8 +20,10 @@ export class MarcasComponent implements OnInit {
 
   cargarData(){
     this.dataService.getData()
-        .subscribe(resp => {
-          console.log(resp);
+        .subscribe( (resp: any) => {
+          // console.log(resp);
+          console.log(resp.marcas);
+          this.datosMarcas = resp.marcas;
         });
   }
 
