@@ -41,9 +41,12 @@
                                 <label class="col-form-label">Tipo certificacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <!-- <input type="text" class="form-control" [(ngModel)]="datosCertificacion.tipo_certificacion" disabled> -->
-                                <input type="text" class="form-control" disabled>
-                            </div>
+                                <select class="form-select">
+                                    <option selected>Emisor</option>
+                                    <option value="1">Receptor</option>
+                                </select>
+                                <!-- <input type="text" class="form-control" disabled> -->
+                            </div>                                                       
                             <!-- Estado -->
                             <div class="col-lg-3">
                                 <label class="col-form-label">Estado:</label>
