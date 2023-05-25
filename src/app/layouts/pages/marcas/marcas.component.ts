@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
+import { MarcasService } from 'src/app/services/marcas.service';
 
 
 @Component({
@@ -11,17 +12,16 @@ export class MarcasComponent implements OnInit {
 
   public datosMarcas: any = [];
 
-  constructor( private datosServices: DatosContribuyentesService ){}
+  constructor( private dataService: MarcasService ){}
 
   ngOnInit(): void {
     this.cargarData();
   }
 
   cargarData(){
-    this.datosServices.cargarDatos()
-        .subscribe( (resp: any) => {
-          this.datosMarcas = resp.marcas;
-          console.log(resp.marcas);
+    this.dataService.getData()
+        .subscribe(resp => {
+          console.log(resp);
         });
   }
 
