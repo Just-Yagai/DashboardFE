@@ -13,7 +13,7 @@ export class SecuenciasComponent implements OnInit {
   constructor( private datosServices: DatosContribuyentesService ){}
 
   ngOnInit(): void {
-    // this.cargarData();
+    this.cargarData();
   }
 
   cargarData(){

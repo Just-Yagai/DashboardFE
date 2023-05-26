@@ -24,7 +24,7 @@ export class ComprobantesComponent implements OnInit {
               
 
   ngOnInit(): void {
-    // this.cargarData();
+    this.cargarData();
   }
 
   imprimirxml(){
