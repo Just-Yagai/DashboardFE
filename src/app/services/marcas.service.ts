@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Marca } from '../models/marca';
+import { responseMarcas } from '../models/reqres-response';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class MarcasService {
   getData(){
     const url = 'assets/json/marcas.json';
     // return this.http.get<Marca>( url );
-    return this.http.get( url );
+    return this.http.get<responseMarcas>( url );
 
   }
 }
