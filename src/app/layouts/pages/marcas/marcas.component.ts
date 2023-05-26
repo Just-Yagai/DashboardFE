@@ -21,8 +21,7 @@ export class MarcasComponent implements OnInit {
   cargarData(){
     this.dataService.getData()
         .subscribe( (resp: any) => {
-          // console.log(resp);
-          console.log(resp.marcas);
+          console.log(resp);
           this.datosMarcas = resp.marcas;
         });
   }
