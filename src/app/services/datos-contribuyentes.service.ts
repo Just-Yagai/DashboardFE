@@ -14,7 +14,7 @@ export class DatosContribuyentesService {
   // buscarContribuyentes(rnc: string): Observable<any> {
   //   return this.http.get<any>(`${this.apiUrl}?rnc=${rnc}`);
   // }
-
+  
   cargarDatos() {
 
     const url = 'assets/json/datos.json';

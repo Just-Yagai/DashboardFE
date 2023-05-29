@@ -7,9 +7,11 @@ import { HttpClient } from '@angular/common/http';
 export class ComprobantesService {
 
   constructor(private http: HttpClient) { }
+  cargarDatos() {
 
-  public get(url:string){
-    return this.http.get(url);
+    const url = 'assets/json/rncEstado.json';
+    return this.http.get( url );
+    
   }
 }
 

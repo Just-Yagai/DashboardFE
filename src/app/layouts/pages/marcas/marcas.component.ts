@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
 import { MarcasService } from 'src/app/services/marcas.service';
 
-
 @Component({
   selector: 'app-marcas',
   templateUrl: './marcas.component.html',
@@ -26,6 +25,19 @@ export class MarcasComponent implements OnInit {
         });
   }
 
+  // cargarData(){
+  //   const data = this.dataService.getDataLocalStorage();
+
+  //   if (data) {
+  //     this.datosMarcas = data;
+  //   }else{
+  //     this.dataService.getData()
+  //         .subscribe((resp: any) => {
+  //           this.datosMarcas = resp.marcas;
+  //         });
+  //   }
+  // }
+
   cambiarEstado(index: number) {
     if (this.datosMarcas[index].estado === 'Disponible') {
       this.datosMarcas[index].estado = 'No disponible';
@@ -34,8 +46,7 @@ export class MarcasComponent implements OnInit {
       this.datosMarcas[index].estado = 'Disponible';
       this.datosMarcas[index].btn = 'Remover';
     }
-    
     // Guardar los datos actualizados en el LocalStorage
-    // localStorage.setItem('datosMarcas', JSON.stringify(this.datosMarcas));
+    // this.dataService.saveDataToLocalStorage(this.datosMarcas);
   }
 }

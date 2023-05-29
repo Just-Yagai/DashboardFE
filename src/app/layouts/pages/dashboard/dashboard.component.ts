@@ -33,7 +33,7 @@ export class DashboardComponent {
       case 'emisor':
         this.setPostulacionData('Registrado', '26/05/2023', '30/06/2023');
         break;
-      case 'receptor':
+      case 'proveedor':
         this.setPostulacionData('Registrado', '4/07/2023', '16/08/2023');
         break;
       default:

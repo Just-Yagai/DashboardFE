@@ -20,7 +20,7 @@ export class DelegacionesComponent implements OnInit {
     this.datosServices.cargarDatos()
         .subscribe( (resp: any) => {
           this.datosDelegaciones = resp.delegaciones;
-          console.log(resp.delegaciones);
+          // console.log(resp);
         });
   }
 

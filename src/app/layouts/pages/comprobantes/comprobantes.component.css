@@ -1,3 +1,8 @@
+.selected {
+  background-color: #212529; /* Puedes cambiar el estilo de fondo según tus preferencias */
+  color: #F8F9FA; /* Puedes cambiar el color del texto según tus preferencias */
+}
+
 .btn{
     --bs-btn-border-color: 0;
 }

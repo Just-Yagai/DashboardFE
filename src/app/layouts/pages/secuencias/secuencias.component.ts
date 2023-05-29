@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
 
 @Component({
@@ -10,18 +10,18 @@ export class SecuenciasComponent implements OnInit {
 
   public datosSecuencias: any = [];
 
-  constructor( private datosServices: DatosContribuyentesService ){}
+  constructor(private datosServices: DatosContribuyentesService) { }
 
   ngOnInit(): void {
     this.cargarData();
   }
 
-  cargarData(){
+  cargarData() {
     this.datosServices.cargarDatos()
-        .subscribe( (resp: any) => {
-          this.datosSecuencias = resp.secuencias;
-          console.log(resp.secuencias);
-        })
+      .subscribe((resp: any) => {
+        this.datosSecuencias = resp.secuencias;
+        // console.log(resp.secuencias);
+      })
   }
 
   // Modal Secuencias

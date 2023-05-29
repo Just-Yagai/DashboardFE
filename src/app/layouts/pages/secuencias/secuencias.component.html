@@ -12,23 +12,23 @@
                 <th>Nro. Autorizado</th>
                 <th>Estado</th>
                 <th>Disponible</th>
-                <th>Informacion Adicional</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr class="text-center" *ngFor="let items of datosSecuencias">
-                <td>{{ items.e_CF }}</td>
-                <td>{{ items.secuenciaDesde }}</td>
-                <td>{{ items.secuenciaHasta }}</td>
-                <td>{{ items.nroAutorizacion }}</td>
-                <td>{{ items.estado }}</td>
-                <td>{{ items.realizadoEmision }}</td>
-                <td>
-                    <button (click)="setFechaRegistro2(items.fechaRegistro2);
-                                    setFechaDesdeModal(items.fechaDesde);
-                                    setFechaHastaModal(items.fechaHasta);" class="btn"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal2"><img src="assets/img/view-more.svg" width="30" height="30" alt="Ver Mas"></button>
-                </td>
+                    <td>{{ items.e_CF }}</td>
+                    <td>{{ items.secuenciaDesde }}</td>
+                    <td>{{ items.secuenciaHasta }}</td>
+                    <td>{{ items.nroAutorizacion }}</td>
+                    <td>{{ items.estado }}</td>
+                    <td>{{ items.realizadoEmision }}</td>
+                    <td>
+                        <button (click)="setFechaRegistro2(items.fechaRegistro2);
+                                        setFechaDesdeModal(items.fechaDesde);
+                                        setFechaHastaModal(items.fechaHasta);" class="btn"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal2"><img src="assets/img/view-more.svg" width="30" height="30" alt="Ver Mas"></button>
+                    </td>
             </tr>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"

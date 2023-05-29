@@ -3,6 +3,7 @@ import { jsPDF } from 'jspdf';
 import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
 import * as JsonToXML from 'js2xmlparser';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ComprobantesService } from 'src/app/services/comprobantes/comprobantes.service';
 
 // interface RespuestaData {
 //   comprobante: any[];
@@ -15,135 +16,78 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class ComprobantesComponent implements OnInit {
 
-  public datosComprobantes: any = [];
-  // xmlContent: SafeHtml = '';
-  xmlContent = '';
+  public rncEstado: any = [];
 
-  constructor(private datosServices: DatosContribuyentesService,
-              private sanitizer: DomSanitizer ){}
+  constructor( private datosServices: ComprobantesService ){}
               
 
   ngOnInit(): void {
     this.cargarData();
   }
 
-  imprimirxml(){
-    const xml = JsonToXML.parse('datos', this.datosComprobantes);
-    this.xmlContent = (xml);
-    // this.xmlContent = this.sanitizer.bypassSecurityTrustHtml(xml);
-  }
-
   cargarData(){
     this.datosServices.cargarDatos()
         .subscribe( (resp: any) => {
-          this.datosComprobantes = resp.comprobante;
-          console.log(resp.comprobante);
+          // console.log(resp);
+          this.rncEstado = resp.datosrncEstado;
         });
   }
 
-  // public cargarData(){
-  //   this.comprobanteService.get(`assets/json/datos.json`)
-  //   .subscribe( respuesta => {
-  //     console.log(respuesta);
-  //   });
-  // }
-  
-  // public cargarData() {
-  //   this.comprobanteService.get(`assets/json/datos.json`)
-  //     .subscribe((respuesta: any) => {
-  //       const comprobante = respuesta.comprobante;
-  //       console.log(comprobante);
-  //       this.datosComprobantes = respuesta.comprobante;
-  //       console.log(this.datosComprobantes);
-  //     });
-  // }
+  isSelected: boolean = false;
 
-  generatePDF(){
-    let doc = new jsPDF("p", "mm", "A4");
-
-    doc.text('Prueba', 25, 25);
-
-    let blob = doc.output("blob");
-    
-    const url = URL.createObjectURL(blob);
-    window.open(url);
+  selectPointer(value: boolean) {
+    this.isSelected = value;
   }
 
-  // Modal
-  eNCFModal: string = '';
-  fechaRegistroModal: string = '';
-  montoTotalModal: string = '';
-  montoImpuestoModal: string = '';
-  montoExentoModal: string = '';
-  codigoSeguridadModal: string = '';
-  aprobacionComercialModal: string = '';
-  rncCompradorModal: string = '';
-  fechaActualizacionModal: string = '';
-  montoGravadoModal: string = '';
-  totalItbisModal: string = '';
-  montoNoFacturadoModal: string = '';
-  versionECFModal: string = '';
-  fechaAprobacionComercialModal: string = '';
-  trackIdModal: string = '';
+  editingRow: number = -1; // -1 indicates no row is being edited
+  originalData: any = {}; 
+  lista: string[] = ["✓", "X"];
+  listaEstado: string[] = ["Activo", "Inactivo"];
 
-  settrackID(trackID: string) {
-    this.trackIdModal = trackID;
+  buttonStates: boolean[][] = [
+    [false, false], 
+    [false, false], 
+    [false, false], 
+    [false, false]
+  ];
+
+  selectButton(rowIndex: number, columnIndex: number, value: boolean) {
+    this.buttonStates[columnIndex][rowIndex] = value;
   }
 
-  setENCF(e_ncf: string) {
-    this.eNCFModal = e_ncf;
+  selectOption(row: any, field: string, value: string) {
+    row[field] = value === 'si' ? '✓' : 'X';
   }
 
-  setFechaRegistro(fechaRegistro: string) {
-    this.fechaRegistroModal = fechaRegistro;
+  isEstado: boolean = false;
+
+  selectEstado(value: boolean) {
+    this.isEstado = value;
   }
 
-  setFechaActualizacion(fechaActualizacion: string) {
-    this.fechaActualizacionModal = fechaActualizacion;
+  isAutorizadoAFacturar: boolean = false;
+
+  selectAutorizadoAFacturar(value: boolean) {
+    this.isAutorizadoAFacturar = value;
   }
 
-  setMontoTotal(montoTotal: string) {
-    this.montoTotalModal = montoTotal;
+  isGrandeContribuyente: boolean = false;
+
+  selectGrandeContribuyente(value: boolean) {
+    this.isGrandeContribuyente = value;
   }
 
-  setMontoImpuesto(montoImpuesto: string) {
-    this.montoImpuestoModal = montoImpuesto;
+  startEditing(index: number) {
+    this.editingRow = index;
+    this.originalData[index] = { ...this.rncEstado[index] };
   }
 
-  setMontoExento(montoExento: string) {
-    this.montoExentoModal = montoExento;
+  cancelEditing() {
+    this.rncEstado[this.editingRow] = { ...this.originalData[this.editingRow] };
+    this.editingRow = -1;
   }
 
-  setCodigoSeguridad(codigoSeguridad: string) {
-    this.codigoSeguridadModal = codigoSeguridad;
+  saveChanges(){
+    this.editingRow = -1;
   }
-
-  setAprobacionComercial(aprobacionComercial: string) {
-    this.aprobacionComercialModal = aprobacionComercial;
-  }
-
-  setRncComprador(rncComprador: string) {
-    this.rncCompradorModal = rncComprador;
-  }
-
-  setMontoGravador(montoGravado: string) {
-    this.montoGravadoModal = montoGravado;
-  }
-
-  setTotalItbis(totalItbis: string) {
-    this.totalItbisModal = totalItbis;
-  }
-
-  setMontoNoFacturado(montoNoFacturado: string) {
-    this.montoNoFacturadoModal = montoNoFacturado;
-  }
-
-  setVersionECF(versionECF: string) {
-    this.versionECFModal = versionECF;
-  }
-
-  setFechaApronacionComercial(fechaAprobacionComercial: string) {
-    this.fechaAprobacionComercialModal = fechaAprobacionComercial
-  }
-  // end modal
 }

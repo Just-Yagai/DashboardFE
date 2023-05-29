@@ -1,0 +1,11 @@
+{
+    "datosrncEstado": [
+        {
+            "rnc": "00199999996",
+            "estado": "Activo",
+            "autorizadoAFacturar": null,
+            "autorizadoSolicitarSecuencia": null,
+            "esGrandeContribuyente": null
+        }
+    ]
+}
