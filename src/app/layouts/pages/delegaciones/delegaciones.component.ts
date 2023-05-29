@@ -14,6 +14,7 @@ export class DelegacionesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDelegaciones();
+    this.loadData();
   }
 
   // getDelegaciones(){
@@ -23,6 +24,13 @@ export class DelegacionesComponent implements OnInit {
   //         this.Delegaciones = resp.datosDelegaciones;
   //       })
   // }
+
+  loadData() {
+    const storedButtonStates = localStorage.getItem('buttonStates');
+    if (storedButtonStates) {
+      this.buttonStates = JSON.parse(storedButtonStates);
+    } 
+  }
 
   getDelegaciones(){
     const data = this.getServices.getDataLocalStorage();
@@ -111,7 +119,7 @@ export class DelegacionesComponent implements OnInit {
   saveChanges(){
     this.editingRow = -1;
     this.getServices.saveDataToLocalStorage(this.Delegaciones);
+    localStorage.setItem('buttonStates', JSON.stringify(this.buttonStates));
     this.cancelEditing();
   }
-
 }
