@@ -1,32 +1,34 @@
-import { Component } from '@angular/core';
-import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
+import { Component, OnInit } from '@angular/core';
+import { DatosService } from 'src/app/services/datos.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent {
+// export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {
+
+  public datosDashboard: any = [];
+
+  ngOnInit(): void {
+    this.getDashboard();
+  }
+
+  constructor( private getServices: DatosService) { }
+
+  getDashboard(){
+    this.getServices.getData()
+        .subscribe( (resp: any) => {
+          // this.datosDashboard = resp;
+          // console.log(resp);
+        })
+  }
+
   selectedOption?: string;
   estado?: string;
   inicioPostulacion?: string;
   finalizacionPostulacion?: string;
-
-  // onOptionChange() {
-  //   if (this.selectedOption === 'emisor') {
-  //     this.estado = 'Registrado';
-  //     this.inicioPostulacion = '26-05-2023';
-  //     this.finalizacionPostulacion = '30-06-2023';
-  //   } else if (this.selectedOption === 'receptor') {
-  //     this.estado = 'No Registrado';
-  //     this.inicioPostulacion = '4/07/2023';
-  //     this.finalizacionPostulacion = '16/08/2023';
-  //   } else {
-  //     this.estado = '';
-  //     this.inicioPostulacion = '';
-  //     this.finalizacionPostulacion = '';
-  //   }
-  // }
 
   onOptionChange() {
     switch (this.selectedOption) {
@@ -41,6 +43,7 @@ export class DashboardComponent {
         break;
     }
   }
+  
   setPostulacionData(estado: string, inicioPostulacion: string, finalizacionPostulacion: string) {
     this.estado = estado;
     this.inicioPostulacion = inicioPostulacion;
@@ -53,8 +56,6 @@ export class DashboardComponent {
   // rnc!: string;
   // datosContribuyente: any;
   // datosCertificacion: any;
-
-  constructor(private dataServices: DatosContribuyentesService) { }
 
   // buscarContribuyente() {
 

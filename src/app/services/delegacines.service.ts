@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { responseMarcas } from '../models/reqres-response';
 import { of, tap } from 'rxjs';
+// import { DelegacionesResponse } from 'src/app/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MarcasService {
+export class DelegacionesService {
 
   constructor( private http: HttpClient) { }
 
   // getData(){
-  //   const url = 'assets/json/marcas.json';
-  //   return this.http.get<responseMarcas>( url );
+  //   const url = 'assets/json/delegaciones.json';
+  //   return this.http.get(url);
   // }
 
   getData(){
@@ -20,7 +20,7 @@ export class MarcasService {
     if (data) {
       return of(data);
     }else {
-      const url = 'assets/json/marcas.json';
+      const url = 'assets/json/delegaciones.json';
       return this.http.get(url).pipe(
         tap((resp: any) => {
           this.saveDataToLocalStorage(resp);
@@ -30,11 +30,11 @@ export class MarcasService {
   }
 
   saveDataToLocalStorage(data: any) {
-    localStorage.setItem('marcas', JSON.stringify(data));
+    localStorage.setItem('datosDelegaciones', JSON.stringify(data));
   }
 
   getDataLocalStorage(){
-    const data = localStorage.getItem('marcas');
+    const data = localStorage.getItem('datosDelegaciones');
     console.log('Datos del LocalStorage:', data);
     return data ? JSON.parse(data) : null;
   }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
+import { SecuenciasService } from 'src/app/services/secuencias.service';
 
 @Component({
   selector: 'app-secuencias',
@@ -8,20 +8,19 @@ import { DatosContribuyentesService } from 'src/app/services/datos-contribuyente
 })
 export class SecuenciasComponent implements OnInit {
 
-  public datosSecuencias: any = [];
+  public Secuencias: any = [];
 
-  constructor(private datosServices: DatosContribuyentesService) { }
+  constructor( private getServices: SecuenciasService){}
 
   ngOnInit(): void {
-    this.cargarData();
+    this.getSecuencias();
   }
 
-  cargarData() {
-    this.datosServices.cargarDatos()
-      .subscribe((resp: any) => {
-        this.datosSecuencias = resp.secuencias;
-        // console.log(resp.secuencias);
-      })
+  getSecuencias(){
+    this.getServices.getData()
+        .subscribe( (resp: any) => {
+          this.Secuencias = resp.datosSecuencias;
+        })
   }
 
   // Modal Secuencias

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
+import { DelegacionesService } from 'src/app/services/delegacines.service';
 
 @Component({
   selector: 'app-delegaciones',
@@ -8,20 +8,33 @@ import { DatosContribuyentesService } from 'src/app/services/datos-contribuyente
 })
 export class DelegacionesComponent implements OnInit {
 
-  public datosDelegaciones: any = [];
+  public Delegaciones: any = [];
 
-  constructor( private datosServices: DatosContribuyentesService ){}
+  constructor( private getServices: DelegacionesService){}
 
   ngOnInit(): void {
-    this.cargarData();
+    this.getDelegaciones();
   }
 
-  cargarData(){
-    this.datosServices.cargarDatos()
-        .subscribe( (resp: any) => {
-          this.datosDelegaciones = resp.delegaciones;
-          // console.log(resp);
-        });
+  // getDelegaciones(){
+  //   this.getServices.getData()
+  //       .subscribe( (resp: any) => {
+  //         // console.log(resp.datosDelegaciones);
+  //         this.Delegaciones = resp.datosDelegaciones;
+  //       })
+  // }
+
+  getDelegaciones(){
+    const data = this.getServices.getDataLocalStorage();
+
+    if (data) {
+      this.Delegaciones = data;
+    }else{
+      this.getServices.getData()
+          .subscribe((resp: any) => {
+            this.Delegaciones = resp.datosDelegaciones;
+          });
+    }
   }
 
   isSelected: boolean = false;
@@ -87,16 +100,18 @@ export class DelegacionesComponent implements OnInit {
 
   startEditing(index: number) {
     this.editingRow = index;
-    this.originalData[index] = { ...this.datosDelegaciones[index] };
+    this.originalData[index] = { ...this.Delegaciones[index] };
   }
 
   cancelEditing() {
-    this.datosDelegaciones[this.editingRow] = { ...this.originalData[this.editingRow] };
+    this.Delegaciones[this.editingRow] = { ...this.originalData[this.editingRow] };
     this.editingRow = -1;
   }
 
   saveChanges(){
     this.editingRow = -1;
+    this.getServices.saveDataToLocalStorage(this.Delegaciones);
+    this.cancelEditing();
   }
 
 }

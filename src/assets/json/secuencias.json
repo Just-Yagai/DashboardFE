@@ -1,57 +1,5 @@
 {
-  "datos_contribuyentes": [
-    {
-      "rnc": "123456",
-      "razon_social": "Actividades económicas del contribuyente"
-    }
-  ],
-  "datos_certificacion": [
-    {
-      "tipo_certificacion": "Emisor",
-      "estado": "Registrado",
-      "inicio_postulacion": "2023-07-10",
-      "finalizacion_postulacion": "2023-08-11"
-    }
-  ],
-  "marcas": [
-    {
-      "tipo_marca": "Facturador Electrónico",
-      "estado": "Disponible",
-      "fecha_inicio_operacion": "2023/05/12",
-      "btn": "Remover"
-    },
-    {
-      "tipo_marca": "Facturador Gratuito",
-      "estado": "No disponible",
-      "fecha_inicio_operacion": "2023/05/14",
-      "btn": "Habilitar"
-    }
-  ],
-  "delegaciones": [
-    {
-      "rnc_delegado": "00199999996",
-      "firmanteAutorizado": null,
-      "solicitanteAutorizado": null,
-      "aprobadorComercial": null,
-      "administrador": null,
-      "estado": "",
-      "identificacion": "40212599253",
-      "fechaRegistro": "15/01/2023",
-      "fechaActualizacion": "23/09/2025"
-    },
-    {
-      "rnc_delegado": "00188888886",
-      "firmanteAutorizado": null,
-      "solicitanteAutorizado": null,
-      "aprobadorComercial": null,
-      "administrador": null,
-      "estado": "",
-      "identificacion": "40253689562",
-      "fechaRegistro": "14/05/2023",
-      "fechaActualizacion": "12/05/2023"
-    }
-  ],
-  "secuencias": [
+  "datosSecuencias": [
     {
       "e_CF": "Factura de Crédito Fiscal Electrónica (31)",
       "secuenciaDesde": "1",
@@ -161,30 +109,6 @@
       "fechaRegistro2": "09/06/2023",
       "fechaDesde": "10/06/2023",
       "fechaHasta": "11/06/2023"
-    }
-  ],
-  "comprobante": [
-    {
-      "rncEmisor": "131880738",
-      "razonSocial": "Razon social contribuyente",
-      "e_ncf": "E310000000001",
-      "fechaRecepcion": "07/03/2023",
-      "fechaEmision": "07/03/2023",
-      "rncComprador": "00199999996",
-      "montoTotal": "500",
-      "montoImpuesto": "0",
-      "montoExento": "0",
-      "codigoSeguridad": "UkCKEI",
-      "aprobacionComercial": "No",
-      "fechaActualizacion": "16/05/2023 11:00:29 AM",
-      "montoGravado": "0",
-      "totalItbis": "0",
-      "montoNoFacturado": "0",
-      "versionECF": "0",
-      "fechaAprobacionComercial": "N/A",
-      "estado": "Disponible",
-      "fechaRegistro": "16/05/2023 11:00:29 AM",
-      "trackID": "f66b1999-ff06-4fa1-ac00-ea69b84ad9c7"
     }
   ]
 }

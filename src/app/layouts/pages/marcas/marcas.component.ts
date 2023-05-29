@@ -17,26 +17,25 @@ export class MarcasComponent implements OnInit {
     this.cargarData();
   }
 
-  cargarData(){
-    this.dataService.getData()
-        .subscribe( (resp: any) => {
-          console.log(resp);
-          this.datosMarcas = resp.marcas;
-        });
-  }
-
   // cargarData(){
-  //   const data = this.dataService.getDataLocalStorage();
-
-  //   if (data) {
-  //     this.datosMarcas = data;
-  //   }else{
-  //     this.dataService.getData()
-  //         .subscribe((resp: any) => {
-  //           this.datosMarcas = resp.marcas;
-  //         });
-  //   }
+  //   this.dataService.getData()
+  //       .subscribe( (resp: any) => {
+  //         this.datosMarcas = resp.marcas;
+  //       });
   // }
+
+  cargarData(){
+    const data = this.dataService.getDataLocalStorage();
+
+    if (data) {
+      this.datosMarcas = data;
+    }else{
+      this.dataService.getData()
+          .subscribe((resp: any) => {
+            this.datosMarcas = resp.marcas;
+          });
+    }
+  }
 
   cambiarEstado(index: number) {
     if (this.datosMarcas[index].estado === 'Disponible') {
@@ -47,6 +46,6 @@ export class MarcasComponent implements OnInit {
       this.datosMarcas[index].btn = 'Remover';
     }
     // Guardar los datos actualizados en el LocalStorage
-    // this.dataService.saveDataToLocalStorage(this.datosMarcas);
+    this.dataService.saveDataToLocalStorage(this.datosMarcas);
   }
 }

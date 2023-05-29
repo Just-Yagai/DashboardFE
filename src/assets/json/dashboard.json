@@ -1,0 +1,26 @@
+{
+  "datosContribuyente": [
+    {
+      "rnc": "123456",
+      "razonSocial": "Actividades económicas del contribuyente"
+    }
+  ],
+  "datosCertficiacion": [
+    {
+      "tipo_certificacion": [
+        {
+          "tipo": "Emisor",
+          "estado": "Registrado",
+          "inicio_postulacion": "2023/07/10",
+          "finalizacion_postulacion": "2023/10/11"
+        },
+        {
+          "tipo": "Proveedor",
+          "estado": "Registrado",
+          "inicio_postulacion": "2023/08/10",
+          "finalizacion_postulacion": "2023/09/11"
+        }
+      ]
+    }
+  ]
+}

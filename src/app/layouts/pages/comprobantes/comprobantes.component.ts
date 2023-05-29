@@ -3,7 +3,7 @@ import { jsPDF } from 'jspdf';
 import { DatosContribuyentesService } from 'src/app/services/datos-contribuyentes.service';
 import * as JsonToXML from 'js2xmlparser';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ComprobantesService } from 'src/app/services/comprobantes/comprobantes.service';
+import { ComprobantesService } from 'src/app/services/rncEstado.service';
 
 // interface RespuestaData {
 //   comprobante: any[];

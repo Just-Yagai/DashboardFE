@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ComprobantesService {
 
   constructor(private http: HttpClient) { }
+  
   cargarDatos() {
 
     const url = 'assets/json/rncEstado.json';
