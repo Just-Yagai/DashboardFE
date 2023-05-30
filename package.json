@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
     "@fortawesome/fontawesome-free": "^6.4.0",
+    "animate.css": "^4.1.1",
     "js2xmlparser": "^5.0.0",
     "jspdf": "^2.5.1",
     "pdfmake": "^0.2.7",

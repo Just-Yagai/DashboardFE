@@ -35,7 +35,7 @@ export class DelegacionesService {
 
   getDataLocalStorage(){
     const data = localStorage.getItem('datosDelegaciones');
-    console.log('Datos del LocalStorage:', data);
+    // console.log('Datos del LocalStorage:', data);
     return data ? JSON.parse(data) : null;
   }
 }

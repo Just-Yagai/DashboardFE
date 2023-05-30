@@ -22,15 +22,28 @@ export class ComprobantesComponent implements OnInit {
               
 
   ngOnInit(): void {
-    this.cargarData();
+    this.getRncEstado();
+    this.loadData();
   }
 
-  cargarData(){
-    this.datosServices.cargarDatos()
-        .subscribe( (resp: any) => {
-          // console.log(resp);
-          this.rncEstado = resp.datosrncEstado;
-        });
+  loadData() {
+    const storedButtonStates = localStorage.getItem('buttonStates');
+    if (storedButtonStates) {
+      this.buttonStates = JSON.parse(storedButtonStates);
+    } 
+  }
+
+  getRncEstado(){
+    const data = this.datosServices.getDataLocalStorage();
+
+    if (data) {
+      this.rncEstado = data;
+    }else {
+      this.datosServices.getData()
+          .subscribe((resp: any) => {
+            this.rncEstado = resp.datosrncEstado;
+          });
+    }
   }
 
   isSelected: boolean = false;
@@ -48,7 +61,7 @@ export class ComprobantesComponent implements OnInit {
     [false, false], 
     [false, false], 
     [false, false], 
-    [false, false]
+    [false, false],
   ];
 
   selectButton(rowIndex: number, columnIndex: number, value: boolean) {
@@ -59,23 +72,23 @@ export class ComprobantesComponent implements OnInit {
     row[field] = value === 'si' ? '✓' : 'X';
   }
 
-  isEstado: boolean = false;
+  // isEstado: boolean = false;
 
-  selectEstado(value: boolean) {
-    this.isEstado = value;
-  }
+  // selectEstado(value: boolean) {
+  //   this.isEstado = value;
+  // }
 
-  isAutorizadoAFacturar: boolean = false;
+  // isAutorizadoAFacturar: boolean = false;
 
-  selectAutorizadoAFacturar(value: boolean) {
-    this.isAutorizadoAFacturar = value;
-  }
+  // selectAutorizadoAFacturar(value: boolean) {
+  //   this.isAutorizadoAFacturar = value;
+  // }
 
-  isGrandeContribuyente: boolean = false;
+  // isGrandeContribuyente: boolean = false;
 
-  selectGrandeContribuyente(value: boolean) {
-    this.isGrandeContribuyente = value;
-  }
+  // selectGrandeContribuyente(value: boolean) {
+  //   this.isGrandeContribuyente = value;
+  // }
 
   startEditing(index: number) {
     this.editingRow = index;
@@ -89,5 +102,8 @@ export class ComprobantesComponent implements OnInit {
 
   saveChanges(){
     this.editingRow = -1;
+    this.datosServices.saveDataToLocalStorage(this.rncEstado);
+    localStorage.setItem('buttonStates', JSON.stringify(this.buttonStates));
+    this.cancelEditing();
   }
 }

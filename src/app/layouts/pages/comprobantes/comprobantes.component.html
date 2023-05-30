@@ -17,14 +17,10 @@
             <tr class="text-center" *ngFor="let items of rncEstado; let i = index">
                 <ng-container *ngIf="editingRow !== i; else editFields">
                     <td>{{ items.rnc }}</td>
-                    <td [ngStyle]="{ 'color': items.estado === '✓' ? 'green' : 'red' }">{{
-                        items.estado }}</td>
-                    <td [ngStyle]="{ 'color': items.autorizadoAFacturar === '✓' ? 'green' : 'red' }">{{
-                        items.autorizadoAFacturar }}</td>
-                    <td [ngStyle]="{ 'color': items.autorizadoSolicitarSecuencia === '✓' ? 'green' : 'red' }">{{
-                        items.autorizadoSolicitarSecuencia }}</td>
-                    <td [ngStyle]="{ 'color': items.esGrandeContribuyente === '✓' ? 'green' : 'red' }">{{ items.esGrandeContribuyente }}
-                    </td>
+                    <td [ngStyle]="{ 'color': items.estado === 'Activo' ? 'green' : 'red' }">{{ items.estado }}</td>
+                    <td [ngStyle]="{ 'color': items.autorizadoAFacturar === '✓' ? 'green' : 'red' }">{{ items.autorizadoAFacturar }}</td>
+                    <td [ngStyle]="{ 'color': items.autorizadoSolicitarSecuencia === '✓' ? 'green' : 'red' }">{{ items.autorizadoSolicitarSecuencia }}</td>
+                    <td [ngStyle]="{ 'color': items.esGrandeContribuyente === '✓' ? 'green' : 'red' }">{{ items.esGrandeContribuyente }}</td>
                     <td>
                         <button (click)="startEditing(i)" class="btn"><img width="30" height="30" src="assets/img/edit.svg"></button>
                         <button class="btn"><img width="30" height="30" src="assets/img/view-more.svg"></button>

@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SelectOptionComponent {
 
+  tipoSeleccionado?: string;
+
 
   @Input() ver: boolean;
   @Input() comprobante: boolean;

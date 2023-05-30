@@ -35,7 +35,7 @@ export class MarcasService {
 
   getDataLocalStorage(){
     const data = localStorage.getItem('marcas');
-    console.log('Datos del LocalStorage:', data);
+    // console.log('Datos del LocalStorage:', data);
     return data ? JSON.parse(data) : null;
   }
 }
