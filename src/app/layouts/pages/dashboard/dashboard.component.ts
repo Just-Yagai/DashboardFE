@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
     this.getServices.getData()
         .subscribe( (resp: any) => {
           // console.log(resp);
+          this.datosDashboard = resp.tipo_certificacion;
         })
   }
 

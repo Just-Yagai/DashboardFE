@@ -9,6 +9,7 @@ import { SecuenciasComponent } from './pages/secuencias/secuencias.component';
 import { ComprobantesComponent } from './pages/comprobantes/comprobantes.component';
 import { FormsModule } from '@angular/forms';
 import { SelectOptionComponent } from './pages/select-option/select-option.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SelectOptionComponent } from './pages/select-option/select-option.compo
   imports: [
     CommonModule,
     LayoutsRoutingModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
   ]
 })
 export class LayoutsModule { }

@@ -29,26 +29,12 @@
         </div>
         <!-- end -->
 
-        <!-- Select Comprobantes -->
-        <div *ngIf="comprobante === true" class="col-auto">
-            <label class="col-form-label">Comprobante:</label>
-        </div>
-        <div *ngIf="comprobante === true" class="col-lg">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Seleccionar....</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-        </div>
-        <!-- end -->
-
         <!-- Select Tipo -->
         <div *ngIf="ver === true" class="col-auto">
             <label class="col-form-label">Tipo e-CF:</label>
         </div>
         <div *ngIf="ver === true" class="col-lg">
-            <select class="form-select" aria-label="Default select example" [(ngModel)]="tipoSeleccionado">
+            <select class="form-select" aria-label="Default select example">
                 <option selected>Seleccionar...</option>
                 <option value="(31)">Factura de Crédito Fiscal Electrónica (31)</option>
                 <option value="(32)">Factura de Consumo Electrónica (32)</option>

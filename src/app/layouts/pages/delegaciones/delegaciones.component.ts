@@ -17,14 +17,6 @@ export class DelegacionesComponent implements OnInit {
     this.loadData();
   }
 
-  // getDelegaciones(){
-  //   this.getServices.getData()
-  //       .subscribe( (resp: any) => {
-  //         // console.log(resp.datosDelegaciones);
-  //         this.Delegaciones = resp.datosDelegaciones;
-  //       })
-  // }
-
   loadData() {
     const storedButtonStates = localStorage.getItem('buttonStates');
     if (storedButtonStates) {

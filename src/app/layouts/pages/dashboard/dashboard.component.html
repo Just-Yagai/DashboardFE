@@ -11,18 +11,14 @@
                             <label class="col-form-label">rnc:</label>
                         </div>
                         <div class="col-auto">
-                            <!-- <input type="text" class="form-control"
-                            [(ngModel)]="rnc"> -->
                             <input type="text" class="form-control">
                         </div>
                         <div class="col col-form-label">
-                            <!-- <button type="submit" class="btn btn-success btn-sm" (click)="buscarContribuyente()">Buscar</button> -->
                             <button type="submit" class="btn btn-success btn-sm" >Buscar</button>
                         </div>
                     </div>
                     <!-- Razon Social -->
                     <label class="col-form-label">razon social:</label>
-                    <!-- <textarea class="form-control mb-2" rows="3" disabled [(ngModel)]="datosContribuyente.razon_social"></textarea> -->
                     <textarea class="form-control mb-2" rows="3" disabled></textarea>
                 </div>
             </div>
@@ -40,7 +36,7 @@
                                 <label class="col-form-label">Tipo certificacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <select class="form-select" [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
+                                <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
                                     <option value="emisor">Emisor</option>
                                     <option value="proveedor">Proveedor</option>
                                 </select>
