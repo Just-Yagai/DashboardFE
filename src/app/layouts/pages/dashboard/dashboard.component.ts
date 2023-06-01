@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit{
 
   onTipoCertificacionChange() {
     const tipoSeleccionado = this.tiposCertificacion.find(
-    (tipo_certificiacion: { tipo: string }) => tipo_certificiacion.tipo=== this.selectedTipoCertificacion
+    (tipo: { tipo: string }) => tipo.tipo=== this.selectedTipoCertificacion
   );
 
   if (tipoSeleccionado) {

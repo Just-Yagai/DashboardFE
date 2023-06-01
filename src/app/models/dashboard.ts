@@ -1,27 +1,12 @@
-export interface DatosContribuyente {
-    rnc:         string;
-    razonSocial: string;
+export interface datos {
+    rnc:                 string;
+    razonSocial:         string;
+    tipo_certificiacion: TipoCertificiacion;
 }
 
-export interface TipoCertificacion {
-    emisor:    datosProveedorEmisor;
-    proveedor: datosProveedorEmisor;
-}
-
-export interface DatosCertficiacion {
-    tipo_certificacion: TipoCertificacion[];
-}
-
-export interface DatosCont {
-    datosContribuyente: DatosContribuyente[];
-    datosCertficiacion: DatosCertficiacion[];
-}
-
-export interface datosProveedorEmisor {
+export interface TipoCertificiacion {
     tipo:                     string;
     estado:                   string;
     inicio_postulacion:       string;
     finalizacion_postulacion: string;
 }
-
-

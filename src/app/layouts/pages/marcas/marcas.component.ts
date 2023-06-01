@@ -17,35 +17,49 @@ export class MarcasComponent implements OnInit {
     this.cargarData();
   }
 
+  cargarData(){
+    this.dataService.getData()
+        .subscribe( resp => {
+          this.datosMarcas = resp;
+        });
+  }
+
   // cargarData(){
   //   this.dataService.getData()
-  //       .subscribe( (resp: any) => {
-  //         this.datosMarcas = resp.marcas;
+  //       .subscribe( resp => {
+  //         this.datosMarcas = resp;
+  //         console.log(resp);
   //       });
   // }
 
-  cargarData(){
-    const data = this.dataService.getDataLocalStorage();
+  // cambiarEstado(marca: any) {
+  //   if (marca.estado === 'Disponible') {
+  //     marca.estado = 'No disponible';
+  //   } else {
+  //     marca.estado = 'Disponible';
+  //   }
 
-    if (data) {
-      this.datosMarcas = data;
-    }else{
-      this.dataService.getData()
-          .subscribe((resp: any) => {
-            this.datosMarcas = resp.marcas;
-          });
-    }
-  }
+  //   this.dataService.actualizarMarca(marca)
+  //     .subscribe(resp => {
+  //       console.log(resp);
+  //     });
+  // }
 
-  cambiarEstado(index: number) {
-    if (this.datosMarcas[index].estado === 'Disponible') {
-      this.datosMarcas[index].estado = 'No disponible';
-      this.datosMarcas[index].btn = 'Habilitar';
-    } else {
-      this.datosMarcas[index].estado = 'Disponible';
-      this.datosMarcas[index].btn = 'Remover';
-    }
-    // Guardar los datos actualizados en el LocalStorage
-    this.dataService.saveDataToLocalStorage(this.datosMarcas);
-  }
+  // cargarData(){
+  //   const data = this.dataService.getDataLocalStorage();
+
+  //   if (data) {
+  //     this.datosMarcas = data;
+  //   }else{
+  //     this.dataService.getData()
+  //         .subscribe((resp: any) => {
+  //           this.datosMarcas = resp;
+  //           console.log(resp);
+  //         });
+  //   }
+  // }
+
+  // cambiarEstado(index: number) {
+
+  // }
 }

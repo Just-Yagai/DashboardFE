@@ -1,6 +1,6 @@
 export interface responseMarcas {
-    tipo_marca:             string;
-    estado:                 string;
+    rnc: string;
+    tipo: string;
+    estado: string;
     fecha_inicio_operacion: string;
-    btn:                    string;
 }

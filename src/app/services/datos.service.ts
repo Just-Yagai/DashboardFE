@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, throwError, tap } from 'rxjs';
-import { TipoCertificacion } from '../models/dashboard';
+// import { TipoCertificacion } from '../models/dashboard';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class DatosService {
 
   getData(){
     const url = 'assets/json/dashboard.json';
-    return this.http.get<TipoCertificacion>(url);
+    return this.http.get(url);
   }
 
   // getData() {

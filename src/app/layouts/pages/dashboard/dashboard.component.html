@@ -38,7 +38,7 @@
                             <div class="col-lg-6">
                                 <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedTipoCertificacion" (ngModelChange)="onTipoCertificacionChange()">
                                     <option value="">Seleccione un tipo</option>
-                                    <option *ngFor="let tipoCertificacion of tiposCertificacion" [value]="tipoCertificacion.tipo_certificiacion">{{ tipoCertificacion.tipo_certificiacion }}</option>
+                                    <option *ngFor="let items of tiposCertificacion" [value]="items.tipo">{{ items.tipo }}</option>
                                 </select>
                             </div>
                             
