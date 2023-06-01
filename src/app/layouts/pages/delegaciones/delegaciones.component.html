@@ -18,7 +18,7 @@
         <tbody>
             <tr class="text-center" *ngFor="let items of Delegaciones; let i = index">
                 <ng-container *ngIf="editingRow !== i; else editFields">
-                    <td>{{ items.rnc_delegado }}</td>
+                    <td>{{ items.rnc }}</td>
                     <td [ngStyle]="{ 'color': items.firmanteAutorizado === '✓' ? 'green' : 'red' }">{{
                         items.firmanteAutorizado }}</td>
                     <td [ngStyle]="{ 'color': items.solicitanteAutorizado === '✓' ? 'green' : 'red' }">{{
@@ -31,7 +31,7 @@
                     <td>
                         <button (click)="startEditing(i)" class="btn"><img width="30" height="30" src="assets/img/edit.svg"></button>
                         <!-- <button class="btn btn-success btn-sm">Ver mas</button> -->
-                        <button (click)="setRncModal(items.rnc_delegado); 
+                        <button (click)="setRncModal(items.rnc); 
                                         setFechaRegistro(items.fechaRegistro); 
                                         setFechaActualizacion(items.fechaActualizacion);
                                         setIdentificacion(items.identificacion)" class="btn"
@@ -40,7 +40,7 @@
                 </ng-container>
                 <ng-template #editFields>
                     <td>
-                        <label>{{ items.rnc_delegado }}</label>
+                        <label>{{ items.rnc }}</label>
                     </td>
                     <td>
                         <div class="btn-group">

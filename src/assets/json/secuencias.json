@@ -1,6 +1,6 @@
-{
-  "datosSecuencias": [
+[
     {
+      "rnc": "000000001",
       "e_CF": "Factura de Crédito Fiscal Electrónica (31)",
       "secuenciaDesde": "1",
       "secuenciaHasta": "3,000",
@@ -12,6 +12,7 @@
       "fechaHasta": "15/05/2023"
     },
     {
+      "rnc": "000000001",
       "e_CF": "Factura de Consumo Electrónica (32)",
       "secuenciaDesde": "1",
       "secuenciaHasta": "1,000",
@@ -23,6 +24,7 @@
       "fechaHasta": "18/05/2023"
     },
     {
+      "rnc": "000000001",
       "e_CF": "Nota de Débito Electrónica (33)",
       "secuenciaDesde": "1",
       "secuenciaHasta": "500",
@@ -34,6 +36,7 @@
       "fechaHasta": "21/05/2023"
     },
     {
+      "rnc": "000000001",
       "e_CF": "Nota de Débito Electrónica (34)",
       "secuenciaDesde": "1",
       "secuenciaHasta": "500",
@@ -45,6 +48,7 @@
       "fechaHasta": "24/05/2023"
     },
     {
+      "rnc": "000000001",
       "e_CF": "Compras Electrónico (41)",
       "secuenciaDesde": "N/A",
       "secuenciaHasta": "N/A",
@@ -56,6 +60,7 @@
       "fechaHasta": "27/05/2023"
     },
     {
+      "rnc": "000000002",
       "e_CF": "Gastos Menores Electrónico (43)",
       "secuenciaDesde": "1",
       "secuenciaHasta": "200",
@@ -67,6 +72,7 @@
       "fechaHasta": "30/05/2023"
     },
     {
+      "rnc": "000000002",
       "e_CF": "Regímenes Especiales Electrónico (44)",
       "secuenciaDesde": "N/A",
       "secuenciaHasta": "N/A",
@@ -78,6 +84,7 @@
       "fechaHasta": "02/06/2023"
     },
     {
+      "rnc": "000000002",
       "e_CF": "Gubernamental Electrónico (45)",
       "secuenciaDesde": "1",
       "secuenciaHasta": "300",
@@ -89,6 +96,7 @@
       "fechaHasta": "05/06/2023"
     },
     {
+      "rnc": "000000003",
       "e_CF": "Comprobante de Exportaciones Electrónico (46)",
       "secuenciaDesde": "N/A",
       "secuenciaHasta": "N/A",
@@ -100,6 +108,7 @@
       "fechaHasta": "08/06/2023"
     },
     {
+      "rnc": "000000003",
       "e_CF": "Comprobante para Pagos al Exterior Electrónico (47)",
       "secuenciaDesde": "N/A",
       "secuenciaHasta": "N/A",
@@ -111,4 +120,4 @@
       "fechaHasta": "11/06/2023"
     }
   ]
-}
+

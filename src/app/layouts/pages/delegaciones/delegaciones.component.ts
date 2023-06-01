@@ -25,17 +25,29 @@ export class DelegacionesComponent implements OnInit {
   }
 
   getDelegaciones(){
-    const data = this.getServices.getDataLocalStorage();
+    this.getServices.getData()
+        .subscribe( resp => {
+        this.Delegaciones = resp;
 
-    if (data) {
-      this.Delegaciones = data;
-    }else{
-      this.getServices.getData()
-          .subscribe((resp: any) => {
-            this.Delegaciones = resp.datosDelegaciones;
-          });
-    }
-  }
+      });
+}
+
+
+
+
+  // getDelegaciones(){
+  //   const data = this.getServices.getDataLocalStorage();
+
+  //   if (data) {
+  //     this.Delegaciones = data;
+  //   }else{
+  //     this.getServices.getData()
+  //         .subscribe((resp: any) => {
+  //           console.log(resp);
+  //           this.Delegaciones = resp.datosDelegaciones;
+  //         });
+  //   }
+  // }
 
   isSelected: boolean = false;
 

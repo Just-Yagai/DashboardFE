@@ -12,10 +12,13 @@ export class DashboardComponent implements OnInit{
 
   selectedTipoCertificacion: any = [];
   tiposCertificacion: any = [];
+  entrada: string = '';
 
   // ngOnInit(): void {
   //   this.getDashboard();
   // }
+
+
 
   constructor(private certificacionService: TextService) {}
 
@@ -27,6 +30,21 @@ export class DashboardComponent implements OnInit{
     this.certificacionService.getCertificaciones().subscribe(data => {
       this.tiposCertificacion = data;
     });
+  }
+
+  buscarRnc(){
+
+    const rncBuscado = this.entrada;
+    const certificacionEncontrada = this.tiposCertificacion.find((certificacion: { rnc: string; }) => certificacion.rnc === rncBuscado);
+
+    if (certificacionEncontrada) {
+      console.log('El ID existe en el JSON:', certificacionEncontrada);
+   
+    } else {
+      console.log('El ID no existe en el JSON');
+      
+    }
+
   }
 
   onTipoCertificacionChange() {

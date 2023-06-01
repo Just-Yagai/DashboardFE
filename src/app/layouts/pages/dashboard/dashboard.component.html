@@ -11,15 +11,15 @@
                             <label class="col-form-label">rnc:</label>
                         </div>
                         <div class="col-auto">
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" [(ngModel)]="entrada">
                         </div>
                         <div class="col col-form-label">
-                            <button type="submit" class="btn btn-success btn-sm" >Buscar</button>
+                            <button type="submit" class="btn btn-success btn-sm" (click)="buscarRnc()">Buscar</button>
                         </div>
                     </div>
                     <!-- Razon Social -->
                     <label class="col-form-label">razon social:</label>
-                    <textarea class="form-control mb-2" rows="3" disabled></textarea>
+                    <textarea class="form-control mb-2" rows="3" disabled ></textarea>
                 </div>
             </div>
         </div>

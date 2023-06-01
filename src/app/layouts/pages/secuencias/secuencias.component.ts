@@ -19,7 +19,8 @@ export class SecuenciasComponent implements OnInit {
   getSecuencias(){
     this.getServices.getData()
         .subscribe( (resp: any) => {
-          this.Secuencias = resp.datosSecuencias;
+          this.Secuencias = resp;
+          console.log(resp);
         })
   }
 

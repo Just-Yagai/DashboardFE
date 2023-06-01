@@ -10,24 +10,24 @@ export class DelegacionesService {
 
   constructor( private http: HttpClient) { }
 
-  // getData(){
-  //   const url = 'assets/json/delegaciones.json';
-  //   return this.http.get(url);
-  // }
-
   getData(){
-    const data = this.getDataLocalStorage();
-    if (data) {
-      return of(data);
-    }else {
-      const url = 'assets/json/delegaciones.json';
-      return this.http.get(url).pipe(
-        tap((resp: any) => {
-          this.saveDataToLocalStorage(resp);
-        })
-      );
-    }
+    const url = 'assets/json/delegaciones.json';
+    return this.http.get(url);
   }
+
+  // getData(){
+  //   const data = this.getDataLocalStorage();
+  //   if (data) {
+  //     return of(data);
+  //   }else {
+  //     const url = 'assets/json/delegaciones.json';
+  //     return this.http.get(url).pipe(
+  //       tap((resp: any) => {
+  //         this.saveDataToLocalStorage(resp);
+  //       })
+  //     );
+  //   }
+  // }
 
   saveDataToLocalStorage(data: any) {
     localStorage.setItem('datosDelegaciones', JSON.stringify(data));
