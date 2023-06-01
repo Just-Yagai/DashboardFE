@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatosService } from 'src/app/services/datos.service';
+import {TextService} from 'src/app/services/text.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,51 +8,73 @@ import { DatosService } from 'src/app/services/datos.service';
   styleUrls: ['./dashboard.component.css'],
 })
 // export class DashboardComponent implements OnInit {
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit{
 
-  public datosDashboard: any = [];
+  selectedTipoCertificacion: any = [];
+  tiposCertificacion: any = [];
+
+  // ngOnInit(): void {
+  //   this.getDashboard();
+  // }
+
+  constructor(private certificacionService: TextService) {}
 
   ngOnInit(): void {
-    this.getDashboard();
+    this.select();
   }
 
-  constructor( private getServices: DatosService) { }
-
-  getDashboard(){
-    this.getServices.getData()
-        .subscribe( (resp: any) => {
-          // console.log(resp);
-          this.datosDashboard = resp.tipo_certificacion;
-        })
+  select(){
+    this.certificacionService.getCertificaciones().subscribe(data => {
+      this.tiposCertificacion = data;
+    });
   }
 
-  selectedOption?: string;
-  estado?: string;
-  inicioPostulacion?: string;
-  finalizacionPostulacion?: string;
+  onTipoCertificacionChange() {
+    const tipoSeleccionado = this.tiposCertificacion.find(
+    (tipo_certificiacion: { tipo: string }) => tipo_certificiacion.tipo=== this.selectedTipoCertificacion
+  );
 
-  onOptionChange() {
-    switch (this.selectedOption) {
-      case 'emisor':
-        this.setPostulacionData('Registrado', '26/05/2023', '30/06/2023');
-        break;
-      case 'proveedor':
-        this.setPostulacionData('Registrado', '4/07/2023', '16/08/2023');
-        break;
-      default:
-        this.clearPostulacionData();
-        break;
-    }
+  if (tipoSeleccionado) {
+    this.selectedTipoCertificacion = tipoSeleccionado;
   }
+  }
+    
+
+  // getDashboard(){
+  //   this.getServices.getData()
+  //       .subscribe( (resp: any) => {
+  //         // console.log(resp);
+  //         this.datosDashboard = resp.tipo_certificacion;
+  //       })
+  // }
+
+  // selectedOption?: string;
+  // estado?: string;
+  // inicioPostulacion?: string;
+  // finalizacionPostulacion?: string;
+
+  // onOptionChange() {
+  //   switch (this.selectedOption) {
+  //     case 'emisor':
+  //       this.setPostulacionData('Registrado', '26/05/2023', '30/06/2023');
+  //       break;
+  //     case 'proveedor':
+  //       this.setPostulacionData('Registrado', '4/07/2023', '16/08/2023');
+  //       break;
+  //     default:
+  //       this.clearPostulacionData();
+  //       break;
+  //   }
+  // }
   
-  setPostulacionData(estado: string, inicioPostulacion: string, finalizacionPostulacion: string) {
-    this.estado = estado;
-    this.inicioPostulacion = inicioPostulacion;
-    this.finalizacionPostulacion = finalizacionPostulacion;
-  }
-  clearPostulacionData() {
-    this.setPostulacionData('', '', '');
-  }
+  // setPostulacionData(estado: string, inicioPostulacion: string, finalizacionPostulacion: string) {
+  //   this.estado = estado;
+  //   this.inicioPostulacion = inicioPostulacion;
+  //   this.finalizacionPostulacion = finalizacionPostulacion;
+  // }
+  // clearPostulacionData() {
+  //   this.setPostulacionData('', '', '');
+  // }
 
   // rnc!: string;
   // datosContribuyente: any;

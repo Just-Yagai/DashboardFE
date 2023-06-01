@@ -1,24 +1,23 @@
-{
-  "datosContribuyente": [
-    {
-      "rnc": "123456",
-      "razonSocial": "Actividades económicas del contribuyente"
-    }
-  ],
-  "emisor": [
-    {
+[
+  {
+    "rnc": "000000001",
+    "razonSocial": "Actividades económicas del contribuyente",
+    "tipo_certificiacion": {
       "tipo": "Emisor",
       "estado": "Registrado",
-      "inicio_postulacion": "2023/07/10",
-      "finalizacion_postulacion": "2023/10/11"
+      "inicio_postulacion": "10/07/2023",
+      "finalizacion_postulacion": "11/10/2023"
     }
-  ],
-  "proveedor": [
-    {
-      "tipo": "Proveedor",
+  },
+  {
+    "rnc": "000000002",
+    "razonSocial": "Actividades económicas del contribuyente nose",
+    "tipo_certificiacion": {
+      "tipo": "proveedor",
       "estado": "Registrado",
-      "inicio_postulacion": "2023/08/10",
-      "finalizacion_postulacion": "2023/09/11"
+      "inicio_postulacion": "10/08/2023",
+      "finalizacion_postulacion": "11/9/2023"
     }
-  ]
-}
+  }
+]
+    

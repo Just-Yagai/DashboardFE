@@ -1,4 +1,3 @@
-<h1>Francisco probando git</h1>
 <div class="container overflow-hidden">
     <div class="row gx-5">
         <!-- First Card -->
@@ -37,9 +36,9 @@
                                 <label class="col-form-label">Tipo certificacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
-                                    <option value="emisor">Emisor</option>
-                                    <option value="proveedor">Proveedor</option>
+                                <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedTipoCertificacion" (ngModelChange)="onTipoCertificacionChange()">
+                                    <option value="">Seleccione un tipo</option>
+                                    <option *ngFor="let tipoCertificacion of tiposCertificacion" [value]="tipoCertificacion.tipo_certificiacion">{{ tipoCertificacion.tipo_certificiacion }}</option>
                                 </select>
                             </div>
                             
@@ -48,7 +47,7 @@
                                 <label class="col-form-label">Estado:</label>
                             </div>
                             <div class="col-lg-6">
-                                <input disabled type="text" class="form-control" [(ngModel)]="estado" [ngSwitch]="selectedOption !== 'emisor' && selectedOption !== 'receptor'">
+                                <input disabled type="text" class="form-control" [(ngModel)]="selectedTipoCertificacion.estado">
                             </div>
                             
                             <!-- Inicio Postulacion -->
@@ -56,7 +55,7 @@
                                 <label class="col-form-label">Inicio Postulacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <input disabled  type="text" class="form-control" [(ngModel)]="inicioPostulacion" [ngSwitch]="selectedOption !== 'emisor' && selectedOption !== 'receptor'">
+                                <input disabled type="text" class="form-control" [(ngModel)]="selectedTipoCertificacion.inicio_postulacion">
                             </div>
                             
                             <!-- Finalizacion Postulacion -->
@@ -64,45 +63,8 @@
                                 <label class="col-form-label">Finalizacion Postulacion:</label>
                             </div>
                             <div class="col-lg-6">
-                                <input disabled type="text" class="form-control" [(ngModel)]="finalizacionPostulacion" [ngSwitch]="selectedOption !== 'emisor' && selectedOption !== 'receptor'">
+                                <input disabled type="text" class="form-control" [(ngModel)]="selectedTipoCertificacion.finalizacion_postulacion">
                             </div>
-                            
-                            <!-- Tipo de certificacion -->
-                            <!-- <div class="col-lg-auto">
-                                <label class="col-form-label">Tipo certificacion:</label>
-                            </div> -->
-                            <!-- <div class="col-lg-6">
-                                <select class="form-select">
-                                    <option selected>Emisor</option>
-                                    <option value="2">Receptor</option>
-                                </select>
-                                <input type="text" class="form-control" disabled>
-                            </div>                                                        -->
-                            <!-- Estado -->
-                            <!-- <div class="col-lg-3">
-                                <label class="col-form-label">Estado:</label>
-                            </div> -->
-                            <!-- <div class="col-lg-6">
-                                <input type="text" class="form-control" [(ngModel)]="datosCertificacion.estado" disabled>
-                                <input type="text" class="form-control" disabled>
-                            </div> -->
-                            <!-- Inicio Postulacion -->
-                            <!-- <div class="col-lg-auto">
-                                <label class="col-form-label">Inicio Postulacion:</label>
-                            </div> -->
-                            <!-- <div class="col-lg-6">
-                                <input type="date" class="form-control" [(ngModel)]="datosCertificacion.inicio_postulacion" disabled>
-                                <input type="date" class="form-control" disabled>
-                            </div> -->
-                            <!-- Finalizacion Postulacion -->
-                            <!-- <div class="col-lg-auto">
-                                <label class="col-form-label">Finalizacion Postulacion:</label>
-                            </div> -->
-                            <!-- <div class="col-lg-6">
-                                <input type="date" class="form-control" [(ngModel)]="datosCertificacion.finalizacion_postulacion" disabled>
-                                <input type="date" class="form-control" disabled>
-                            </div> -->
-                            <!-- End -->
                         </div>
                     </div>
                 </div>
